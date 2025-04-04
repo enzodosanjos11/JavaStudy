@@ -41,8 +41,20 @@ class Casting{
     }
 }
 
-class ExplicaçãoString{
+class ExplicacaoString{
+
+    public static void exemplo(){
+    //String na prática:
     
+    System.out.println("---------------- String --------------------");
+    
+    String nome = "Enzo Andrade dos Anjos";
+    System.out.println("Nome do Desenvolvedor: "+ nome);
+
+    nome = nome.toUpperCase();
+    System.out.println("Nome do Desenvolvedor com letras MAIÚSCULAS: " + nome);
+    System.out.println();
+    }
 }
 
 
@@ -52,6 +64,7 @@ public class sintaxe {
 
     Variaveis.variaveisfun();
     Casting.tiposDeCasting();
+    ExplicacaoString.exemplo();
 
 
 
