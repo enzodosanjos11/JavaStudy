@@ -1,6 +1,8 @@
 public class App {
     public static void main(String[] args) {
         var scanner = new java.util.Scanner(System.in);
+        
+        boolean continuar = true;
         Account a1 = new Account();
         
         System.out.println("Digite o número da conta: ");
@@ -14,21 +16,44 @@ public class App {
         a1.balance = scanner.nextDouble();
         scanner.nextLine();
 
-        System.out.println("Deseja ver os dados da conta ? [Sim/Não]");
-        String respostaUsuario = scanner.nextLine();
-
-        if(respostaUsuario.equals("Sim")){
-            System.out.println("-------------------- Dados da Conta --------------------");
-            System.out.printf("\tNúmero da conta = %d\n", a1.accountNumber);
-            System.out.printf("\tNome do dono da conta = %s\n", a1.accountOwner);
-            a1.printBalance();
-            System.out.println("--------------------------------------------------------");
-
+        while(continuar){
+            System.out.println("-------------------- Opções --------------------");
+            System.out.printf("\t1 - Dados da conta\n\t2 - Saldo da conta.\n\t3 - Depósito.\n\t4 - Saque.\n\t5 - FINALIZAR PROGRAMA.\n");
+            System.out.println("------------------------------------------------");
             System.out.println();
-            System.out.println("PROGRAMA FINALIZADO.");
-        }else{
-            System.out.println("Certo, até a próxima.");
+            System.out.println("Digite o número da opção que deseja utilizar.");
+            int respostaUsuario = scanner.nextInt();
+            scanner.nextLine();
+
+            switch(respostaUsuario){
+                case 1 -> a1.accountInformation();
+                case 2 -> a1.printBalance();
+                case 3 -> {
+                    System.out.print("Valor do depósito = ");
+                    double depositnumber = scanner.nextDouble();
+                    scanner.nextLine();
+                    a1.deposit(depositnumber);
+                    System.out.println("Depósito de " + depositnumber + " reais realizado com sucesso.");
+                    System.out.println();
+                } 
+                case 4 -> {
+                    System.out.print("Valor do saque = ");
+                    double withdrawnumber = scanner.nextDouble();
+                    scanner.nextLine();
+                    a1.withdraw(withdrawnumber);
+                    System.out.println("Saque de " + withdrawnumber + " reais realizado com sucesso.");
+                    System.out.println();
+                }
+                case 5 -> {
+                    System.out.println("Programa finalizado");
+                    continuar = false;
+                }
+                default -> {
+                    System.out.println("Opção Inválida");
+                }    
+            };
         }
     }
 }
+
 
